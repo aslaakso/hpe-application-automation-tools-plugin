@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\HpToolsLauncher",
+    "\\HpToolsLauncher\\externals",
+    "\\HpToolsLauncher\\JunitXml",
+    "\\HpToolsLauncher\\Runners",
+    "\\HpToolsLauncher\\TestRunners",
+    "\\LRAnalysisLauncher"
+  ],
+  "SelectedNode": "\\HpToolsLauncher\\externals\\Interop.Wlrun.dll",
+  "PreviewInSolutionExplorer": false
+}
