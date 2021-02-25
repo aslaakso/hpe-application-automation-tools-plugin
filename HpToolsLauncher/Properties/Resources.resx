@@ -239,7 +239,7 @@ Save the test in QuickTest and then run it again.</value>
     <value>Test result: Succeeded with Warnings</value>
   </data>
   <data name="FsRunnerTestsFound" xml:space="preserve">
-    <value>{0} tests found:</value>
+    <value>{0} test(s) found:</value>
   </data>
   <data name="GeneralAbortedByUser" xml:space="preserve">
     <value>========================\nJob was aborted by user!\n========================</value>

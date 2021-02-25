@@ -1514,7 +1514,6 @@ namespace HpToolsLauncher
                                     if (prevRunId == -1)
                                     {
                                         Console.WriteLine("No test runs exist for this test");
-                                        continue;
                                     }
                                     runDesc.TestRuns[testIndex].PrevRunId = prevRunId;
 
@@ -1855,7 +1854,6 @@ namespace HpToolsLauncher
         
         public void Dispose(bool managed)
         {
-            //Console.WriteLine("Dispose ALM connection");
             if (Connected)
             {
                 if (TdConnection != null)

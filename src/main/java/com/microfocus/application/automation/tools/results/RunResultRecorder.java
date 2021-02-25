@@ -185,9 +185,9 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
 	public void pipelinePerform(@Nonnull Run<?, ?> build, @Nonnull FilePath workspace, @Nonnull Launcher launcher,
 			@Nonnull TaskListener listener, @Nonnull Map<String, String> builderResultNames)
 			throws IOException, InterruptedException {
-		final List<String> mergedResultNames = new ArrayList<String>();
-		runReportList = new ArrayList<FilePath>();
-		final List<String> fileSystemResultNames = new ArrayList<String>();
+		final List<String> mergedResultNames = new ArrayList<>();
+		runReportList = new ArrayList<>();
+		final List<String> fileSystemResultNames = new ArrayList<>();
 		fileSystemResultNames.add(builderResultNames.get(RunFromFileBuilder.class.getName()));
 
 		mergedResultNames.addAll(builderResultNames.values());
@@ -325,9 +325,9 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
 
 		if ((resultFiles == null) || (resultFiles.isEmpty())) { return; }
 
-		ArrayList<String> zipFileNames = new ArrayList<String>();
-		ArrayList<FilePath> reportFolders = new ArrayList<FilePath>();
-		List<String> reportNames = new ArrayList<String>();
+		ArrayList<String> zipFileNames = new ArrayList<>();
+		ArrayList<FilePath> reportFolders = new ArrayList<>();
+		List<String> reportNames = new ArrayList<>();
 
 		listener.getLogger()
 				.println("Report archiving mode is set to: " + _resultsPublisherModel.getArchiveTestResultsMode());
@@ -368,7 +368,7 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
 		}
 		for (String resultsFilePath : resultFiles) {
 			FilePath resultsFile = projectWS.child(resultsFilePath);
-			List<ReportMetaData> ReportInfoToCollect = new ArrayList<ReportMetaData>();
+			List<ReportMetaData> ReportInfoToCollect = new ArrayList<>();
 
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
