@@ -788,14 +788,30 @@ namespace HpToolsLauncher
                     string reportPath = null;
                     if (_ciParams.ContainsKey("fsReportPath"))
                     {
-                        if (Directory.Exists(_ciParams["fsReportPath"]))
-                        {   //path is not parameterized
-                            reportPath = _ciParams["fsReportPath"];
+                        if (!(_ciParams["fsReportPath"].Contains('$')))//path is not parameterized
+                        {
+                            if (Directory.Exists(_ciParams["fsReportPath"]))
+                            {  
+                                reportPath = _ciParams["fsReportPath"];
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    DirectoryInfo report = Directory.CreateDirectory(_ciParams["fsReportPath"]);
+                                    reportPath = report.FullName;
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine("The provided directory path could not be created: {0}", _ciParams["fsReportPath"]);
+                                    Environment.Exit((int)Launcher.ExitCodeEnum.Failed);
+                                }
+                            }
                         }
-                        else 
-                        {   //path is parameterized
+                        else //path is parameterized
+                        {
                             string fsReportPath = _ciParams["fsReportPath"];
-   
+
                             //get parameter name
                             fsReportPath = fsReportPath.Trim(new Char[] { ' ', '$', '{', '}' });
 
@@ -808,9 +824,9 @@ namespace HpToolsLauncher
                             catch (KeyNotFoundException ex)
                             {
                                 Console.WriteLine("============================================================================");
-                                Console.WriteLine("The provided results folder path {0} does not exist.", fsReportPath);
+                                Console.WriteLine("The provided key {0} was not found in the dictionary.", fsReportPath);
                                 Console.WriteLine("============================================================================");
-                                Environment.Exit((int) Launcher.ExitCodeEnum.Failed);
+                                Environment.Exit((int)Launcher.ExitCodeEnum.Failed);
                             }
                         }
                     }
